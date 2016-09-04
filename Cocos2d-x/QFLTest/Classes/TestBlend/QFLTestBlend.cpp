@@ -82,17 +82,17 @@ void QFLTestBlend::showExample(const std::string &strText, cocos2d::BlendFunc bl
     
     //生成Example(原本打算用LayerColor,但是LayerColor没有setBlend方法。。。)
     //Red,1
-    auto pRed = Sprite::create("Images/Red.png");
+    auto pRed = Sprite::create("TestBlend/Images/Red.png");
     pRed->setPosition(Vec2(pPanel->getContentSize().width - pRed->getContentSize().width * 0.75,
                            pPanel->getContentSize().height * 0.5 + pRed->getContentSize().height * 0.5));
     pPanel->addChild(pRed, 1);
     //Green,2
-    auto pGreen = Sprite::create("Images/Green.png");
+    auto pGreen = Sprite::create("TestBlend/Images/Green.png");
     pGreen->setPosition(Vec2(pPanel->getContentSize().width - pGreen->getContentSize().width * 0.5,
                              pPanel->getContentSize().height * 0.5));
     pPanel->addChild(pGreen, 2);
     //Blue,3
-    auto pBlue = Sprite::create("Images/Blue.png");
+    auto pBlue = Sprite::create("TestBlend/Images/Blue.png");
     pBlue->setPosition(Vec2(pPanel->getContentSize().width - pBlue->getContentSize().width,
                             pPanel->getContentSize().height * 0.5));
     pPanel->addChild(pBlue, 3);

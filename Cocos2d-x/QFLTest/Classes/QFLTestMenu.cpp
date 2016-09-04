@@ -10,7 +10,9 @@
 
 #include "QFLTools/QFLHelper.hpp"
 
+//TestClass
 #include "TestBlend/QFLTestBlend.hpp"
+#include "TestSimpleAudio/QFLTestSimpleAudio.hpp"
 
 USING_NS_CC;
 
@@ -59,7 +61,9 @@ void QFLTestMenu::addMenus()
     this->addMenuItem("TestBlend", [=](){
         this->addChild(QFLTestBlend::create());
     });
-    
+    this->addMenuItem("TestSimpleAudioEngine", [=](){
+        this->addChild(QFLTestSimpleAudio::create());
+    });
     
 }
 
