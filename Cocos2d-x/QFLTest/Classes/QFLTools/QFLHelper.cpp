@@ -35,7 +35,8 @@ QFLHelper* QFLHelper::getInstance()
 
 void QFLHelper::initHelper()
 {
-    
+    //置随机数
+    srand((int)time(0));
 }
 
 
