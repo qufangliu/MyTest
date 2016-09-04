@@ -26,6 +26,7 @@ private:
     void addTestValue();
     
     void showExample(const std::string &strText, cocos2d::BlendFunc blend);
+    cocos2d::Layer* getColorfulLayer(cocos2d::Size size, cocos2d::Color4B color, const std::string &strText);
     
 private:
     cocos2d::ui::ListView *m_pListExample;

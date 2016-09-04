@@ -55,10 +55,12 @@ void QFLTestBlend::addUI()
 void QFLTestBlend::addTestValue()
 {
     //添加测试用Blend
-    
     this->showExample("{GL_ONE, GL_ONE}", {GL_ONE, GL_ONE});
     this->showExample("{GL_SRC_ALPHA, GL_ONE}", {GL_SRC_ALPHA, GL_ONE});
     this->showExample("{GL_SRC_COLOR, GL_ONE}", {GL_SRC_COLOR, GL_ONE});
+    this->showExample("{GL_DST_COLOR, GL_ONE}", {GL_DST_COLOR, GL_ONE});
+    this->showExample("{GL_DST_ALPHA, GL_ONE}", {GL_DST_ALPHA, GL_ONE});
+    this->showExample("{GL_ZERO, GL_ONE}", {GL_ZERO, GL_ONE});
 }
 
 void QFLTestBlend::showExample(const std::string &strText, cocos2d::BlendFunc blend)
@@ -78,27 +80,47 @@ void QFLTestBlend::showExample(const std::string &strText, cocos2d::BlendFunc bl
     pLabel->setPosition(Vec2(50.0, pPanel->getContentSize().height * 0.5));
     pPanel->addChild(pLabel);
     
-    //生成Example
-    //1.上半截白色背景
-    auto pNodeWhite = Sprite::create("Images/TestBlend/White.png");
-    pNodeWhite->setPosition(Vec2(pPanel->getContentSize().width - 25 - pNodeWhite->getContentSize().width * 0.5,
-                                 pPanel->getContentSize().height - 10 - pNodeWhite->getContentSize().height * 0.5));
-    pPanel->addChild(pNodeWhite);
-    //2.左边彩色
-    auto pColorfulLeft = Sprite::create("Images/TestBlend/Colorful.png");
-    pColorfulLeft->setPosition(Vec2(pPanel->getContentSize().width - 100 - pColorfulLeft->getContentSize().width * 0.5,
-                                    10 + pColorfulLeft->getContentSize().height * 0.5));
-    pPanel->addChild(pColorfulLeft);
-    //3.右边彩色
-    auto pColorfulRight = Sprite::create("Images/TestBlend/Colorful.png");
-    pColorfulRight->setRotation(90.0);
-    pColorfulRight->setPosition(Vec2(pPanel->getContentSize().width - pColorfulRight->getContentSize().width * 0.5,
-                                     10 + pColorfulRight->getContentSize().height * 0.5));
-    pPanel->addChild(pColorfulRight);
+    //生成Example(原本打算用LayerColor,但是LayerColor没有setBlend方法。。。)
+    //Red,1
+    auto pRed = Sprite::create("Images/Red.png");
+    pRed->setPosition(Vec2(pPanel->getContentSize().width - pRed->getContentSize().width * 0.75,
+                           pPanel->getContentSize().height * 0.5 + pRed->getContentSize().height * 0.5));
+    pPanel->addChild(pRed, 1);
+    //Green,2
+    auto pGreen = Sprite::create("Images/Green.png");
+    pGreen->setPosition(Vec2(pPanel->getContentSize().width - pGreen->getContentSize().width * 0.5,
+                             pPanel->getContentSize().height * 0.5));
+    pPanel->addChild(pGreen, 2);
+    //Blue,3
+    auto pBlue = Sprite::create("Images/Blue.png");
+    pBlue->setPosition(Vec2(pPanel->getContentSize().width - pBlue->getContentSize().width,
+                            pPanel->getContentSize().height * 0.5));
+    pPanel->addChild(pBlue, 3);
     
-    //添加BlendFunc
-    pColorfulRight->setBlendFunc(blend);
+    //Blend，这里对三个精灵都设置了同样的blendfunc
+    pRed->setBlendFunc(blend);
+    pGreen->setBlendFunc(blend);
+    pBlue->setBlendFunc(blend);
     
     //添加Item到List
     m_pListExample->pushBackCustomItem(pPanel);
 }
+
+cocos2d::Layer* QFLTestBlend::getColorfulLayer(cocos2d::Size size, cocos2d::Color4B color, const std::string &strText)
+{
+    //LayerColor
+    auto pLayer = LayerColor::create(color);
+    pLayer->setContentSize(size);
+    
+    //Text
+    if (strText != "") {
+        auto pText = Label::createWithSystemFont(strText, "", 30);
+        pText->setPosition(pLayer->getContentSize() * 0.5);
+        pLayer->addChild(pText);
+    }
+    
+    return pLayer;
+}
+
+
+
