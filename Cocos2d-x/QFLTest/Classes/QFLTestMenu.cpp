@@ -15,6 +15,7 @@
 #include "TestSimpleAudio/QFLTestSimpleAudio.hpp"
 #include "TestMotionStreak/QFLTestStreak.hpp"
 #include "TestFSM/QFLTestFSM.hpp"
+#include "TestElevator/QFLTestElevator.hpp"
 
 USING_NS_CC;
 
@@ -71,6 +72,9 @@ void QFLTestMenu::addMenus()
     });
     this->addMenuItem("TestFSM", [=](){
         this->addChild(QFLTestFSM::create());
+    });
+    this->addMenuItem("TestElevator", [=](){
+        this->addChild(QFLTestElevator::create());
     });
 }
 
