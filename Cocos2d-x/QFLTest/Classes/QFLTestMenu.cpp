@@ -14,6 +14,7 @@
 #include "TestBlend/QFLTestBlend.hpp"
 #include "TestSimpleAudio/QFLTestSimpleAudio.hpp"
 #include "TestMotionStreak/QFLTestStreak.hpp"
+#include "TestFSM/QFLTestFSM.hpp"
 
 USING_NS_CC;
 
@@ -67,6 +68,9 @@ void QFLTestMenu::addMenus()
     });
     this->addMenuItem("TestMotionStreak", [=](){
         this->addChild(QFLTestMotionStreak::create());
+    });
+    this->addMenuItem("TestFSM", [=](){
+        this->addChild(QFLTestFSM::create());
     });
 }
 

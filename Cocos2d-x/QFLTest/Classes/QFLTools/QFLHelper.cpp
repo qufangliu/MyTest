@@ -37,6 +37,9 @@ void QFLHelper::initHelper()
 {
     //置随机数
     srand((int)time(0));
+    
+    //触摸屏蔽层计数器
+    m_mapNoTouchCounter.clear();
 }
 
 
@@ -48,13 +51,39 @@ void QFLHelper::initHelper()
 
 void QFLHelper::addNoTouchLayer(cocos2d::Node *pNode, int nZorder)
 {
-    //透明层
-    auto pLayer = Layer::create();
-    pLayer->setContentSize(SCREEN_VISIBLE_SIZE);
-    pNode->addChild(pLayer, nZorder);
-    
-    //触摸屏蔽
-    this->addNoTouchListener(pLayer);
+    if (m_mapNoTouchCounter.find(pNode) == m_mapNoTouchCounter.end()) {
+        //透明层
+        auto pLayer = Layer::create();
+        pLayer->setContentSize(SCREEN_VISIBLE_SIZE);
+        pLayer->setName("QFL_NoTouchLayer");
+        pNode->addChild(pLayer, nZorder);
+        //触摸屏蔽
+        this->addNoTouchListener(pLayer);
+        //计数
+        m_mapNoTouchCounter[pNode] = 1;
+    }
+    else {
+        //无须添加层，计数即可
+        m_mapNoTouchCounter[pNode]++;
+    }
+}
+void QFLHelper::removeNoTouchLayer(cocos2d::Node *pNode)
+{
+    if (m_mapNoTouchCounter.find(pNode) != m_mapNoTouchCounter.end()) {
+        if (m_mapNoTouchCounter[pNode] == 1) {
+            //计数为1，删除屏蔽层
+            pNode->removeChildByName("QFL_NoTouchLayer");
+            //删除这个计数记录
+            m_mapNoTouchCounter.erase(pNode);
+        }
+        else {
+            //计数超过1，减1
+            m_mapNoTouchCounter[pNode]--;
+        }
+    }
+    else {
+        //没有添加过NoTouchLayer，无须删除
+    }
 }
 
 void QFLHelper::addNoTouchListener(cocos2d::Node *pNode)

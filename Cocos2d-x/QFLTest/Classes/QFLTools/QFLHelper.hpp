@@ -47,8 +47,9 @@ public:
     //屏蔽、背景、按钮等
     //==========
     
-    //添加触摸屏蔽层
+    //添加删除触摸屏蔽层
     void addNoTouchLayer(cocos2d::Node *pNode, int nZorder = 100);
+    void removeNoTouchLayer(cocos2d::Node *pNode);
     //添加触摸屏蔽
     void addNoTouchListener(cocos2d::Node *pNode);
     //添加Back按钮
@@ -57,6 +58,14 @@ public:
     cocos2d::Layer* getColorfulLayer(cocos2d::Color4B color = cocos2d::Color4B::BLACK, int nOpacity = 255);
     //生成黑色背景＋触摸屏蔽＋Back按钮
     cocos2d::Layer* getBlackBGLayer();
+    
+private:
+    
+    //==========
+    //屏蔽、背景、按钮等
+    //==========
+    std::map<cocos2d::Node*, int> m_mapNoTouchCounter;  //触摸屏蔽的计数
+    
 };
 
 //==========
