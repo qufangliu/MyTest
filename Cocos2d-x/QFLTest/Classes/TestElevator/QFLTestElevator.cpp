@@ -11,6 +11,7 @@
 
 //Elevators
 #include "ElevatorOne/TestElevatorOne.hpp"
+#include "ElevatorTwo/TestElevatorTwo.hpp"
 
 USING_NS_CC;
 
@@ -52,6 +53,10 @@ void QFLTestElevator::initSelf()
     //One
     this->addElevator("Elevator-One", [=](){
         this->addChild(TestElevatorOne::create());
+    });
+    //Two
+    this->addElevator("Elevator_Two", [=](){
+        this->addChild(TestElevatorTwo::create());
     });
 }
 

@@ -91,6 +91,12 @@ private:
 #define SCREEN_RIGHT_BOTTOM     QFL_HELPER->getScreenRightBottom()
 #define SCREEN_RIGHT_TOP        QFL_HELPER->getScreenRightTop()
 
+//输出相关的宏
+#define QFL_CLOG(_TEXT_)    do  \
+                            {   \
+                                std::cout << _TEXT_ << std::endl;   \
+                            } while (false)
+
 //==========
 //常量配置
 //==========
