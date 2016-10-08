@@ -24,7 +24,12 @@ public:
     
 private:
     void initSelf();
-    void startElevator();
+//    void startElevator();
+    void addTestItem(const std::string &strText, const std::function<void()> &funcCall);
+    
+private:
+    cocos2d::Menu *m_pMenu;
+    int m_nCount;
 };
 
 #endif /* QFLTestFSM_hpp */
