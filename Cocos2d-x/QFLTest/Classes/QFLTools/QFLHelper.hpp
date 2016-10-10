@@ -53,7 +53,7 @@ public:
     //添加触摸屏蔽
     void addNoTouchListener(cocos2d::Node *pNode);
     //添加Back按钮
-    void addBackMenu(cocos2d::Node *pNode, int nZorder = 100);
+    void addBackMenu(cocos2d::Node *pNode, int nZorder = 0);
     //生成纯色层
     cocos2d::Layer* getColorfulLayer(cocos2d::Color4B color = cocos2d::Color4B::BLACK, int nOpacity = 255);
     //生成黑色背景＋触摸屏蔽＋Back按钮

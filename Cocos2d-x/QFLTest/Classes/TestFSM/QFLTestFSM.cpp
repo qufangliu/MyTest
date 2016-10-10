@@ -10,12 +10,18 @@
 
 #include "QFLTools/QFLHelper.hpp"
 
+//SimpleFSM
 #include "SimpleFSM/QFLElevator.hpp"
+
+//DiscreteStateFSM
 #include "DiscreteStateFSM/QFLElevatorS.hpp"
 
+//StateTree
 #include "GameFSM/QFLGameRoot.hpp"
-
 #include "TestJC.hpp"
+
+//GameTwo
+#include "GameTwoFSM/QFLGameTwoScene.hpp"
 
 USING_NS_CC;
 
@@ -100,6 +106,11 @@ void QFLTestFSM::initSelf()
 //        auto pGame = QFLGameRoot::create();
 //        this->addChild(pGame);
 //        pGame->setState(QFLGameRoot::State::MainState);
+    });
+    
+    this->addTestItem("GameTwo", [=](){
+        auto pLayer = QFLGameTwoScene::create();
+        this->addChild(pLayer);
     });
 }
 
