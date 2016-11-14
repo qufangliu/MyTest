@@ -13,6 +13,8 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+#include "QFLTools/QFLHelper.hpp"
+
 class QFLTestMenu : public cocos2d::Layer
 {
 public:

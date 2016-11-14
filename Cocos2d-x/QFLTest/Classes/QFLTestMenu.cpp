@@ -16,6 +16,9 @@
 #include "TestMotionStreak/QFLTestStreak.hpp"
 #include "TestFSM/QFLTestFSM.hpp"
 #include "TestElevator/QFLTestElevator.hpp"
+#include "TestAlgorithm/Lottery/QFLLottery.hpp"
+#include "TestAlgorithm/Timer/QFLTimeDot.hpp"
+#include "TestEvent/QFLTestEvent.hpp"
 
 USING_NS_CC;
 
@@ -75,6 +78,15 @@ void QFLTestMenu::addMenus()
     });
     this->addMenuItem("TestElevator", [=](){
         this->addChild(QFLTestElevator::create());
+    });
+    this->addMenuItem("TestLottery", [=](){
+        this->addChild(QFLLottery::create());
+    });
+    this->addMenuItem("TestSinDot", [=](){
+        this->addChild(QFLTimeDot::create());
+    });
+    this->addMenuItem("TestEvent", [=](){
+        this->addChild(QFLTestEvent::create());
     });
 }
 

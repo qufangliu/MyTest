@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 
+#include "QFLTools/QFLHelper.hpp"
 
 //State的基类
 class GameTwoState
@@ -23,9 +24,6 @@ public:
     virtual void Exit(cocos2d::Layer* pLayer) = 0;
 };
 
-
-
-#define SC(__type__) static const __type__
 //游戏中的事件（通过事件来进行状态切换）
 namespace GameTwoEvent {
     SC(std::string) Main_Start      = "Event_Main_Start";   //[Main]开始游戏的事件

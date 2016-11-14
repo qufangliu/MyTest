@@ -10,6 +10,7 @@
 #define QFLHelper_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include "cocos2d.h"
 
 class QFLHelper
@@ -80,6 +81,9 @@ private:
 #define SCREEN_WIN_SIZE         QFL_HELPER->getWinSize()
 #define SCREEN_VISIBLE_ORIGIN   QFL_HELPER->getVisibleOrigin()
 
+#define SCREEN_WIDTH            QFL_HELPER->getVisibleSize().width
+#define SCREEN_HEIGHT           QFL_HELPER->getVisibleSize().height
+
 #define SCREEN_TOP              QFL_HELPER->getScreenTop()
 #define SCREEN_BOTTOM           QFL_HELPER->getScreenBottom()
 #define SCREEN_LEFT             QFL_HELPER->getScreenLeft()
@@ -100,7 +104,7 @@ private:
 //==========
 //常量配置
 //==========
-#define SC(T)   static const T
+#define SC(__T__)   static const __T__
 namespace QFLConfig {
     SC(std::string) strSystemFontName       = "Arial";      //测试中所有使用系统字体的字体名
     SC(int) nSystemFontSize                 = 40;           //测试中所有使用系统字体的字体大小
